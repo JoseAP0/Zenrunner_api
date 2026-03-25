@@ -52,6 +52,7 @@ This project was built to demonstrate advanced full-stack capabilities, includin
 *   Ruby 3.x+
 *   Node.js & npm/yarn
 *   PostgreSQL
+*   Redis
 
 ### Backend Setup
 1. Clone the repository: `git clone <your-repo-url>`
