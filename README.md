@@ -56,9 +56,10 @@ This project was built to demonstrate advanced full-stack capabilities, includin
 ### Backend Setup
 1. Clone the repository: `git clone <your-repo-url>`
 2. Navigate to the API directory: `cd run_hub_api`
-3. Install Ruby gems: `bundle install`
-4. Setup the database: `rails db:create db:migrate db:seed`
-5. Start the Rails server: `rails s` (Runs on `http://localhost:3000`)
+3. Create local environment variables: `cp .env.example .env`
+4. Install Ruby gems: `bundle install`
+5. Setup the database: `rails db:create db:migrate db:seed`
+6. Start the Rails server: `rails s` (Runs on `http://localhost:3000`)
 
 ---
 
