@@ -23,6 +23,15 @@ module ZenrunnerApi
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
 
+    config.generators do |generator|
+      generator.test_framework :rspec,
+        fixtures: false,
+        helper_specs: false,
+        routing_specs: false,
+        view_specs: false
+      generator.fixture_replacement :factory_bot, dir: "spec/factories"
+    end
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
