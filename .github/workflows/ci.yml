@@ -12,7 +12,7 @@ jobs:
       postgres:
         image: postgres:17
         env:
-          POSTGRES_USER: ze
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         ports:
           - 5432:5432
