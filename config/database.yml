@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  port: 5432
+  host: localhost
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: zenrunner_api_development
+
+test:
+  <<: *default
+  database: zenrunner_api_test
+
+production:
+  <<: *default
+  database: zenrunner_api_production
+  host: localhost
+  username: postgres
+  password: postgres
