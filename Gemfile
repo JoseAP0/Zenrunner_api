@@ -39,7 +39,7 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 
 # Stripe payments
-gem "stripe", "~> 17.0"
+gem "stripe", "~> 19.1"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
