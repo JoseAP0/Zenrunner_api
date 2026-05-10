@@ -3,13 +3,13 @@ default: &default
   encoding: unicode
   pool: 5
   port: 5432
-  host: localhost
-  username: postgres
-  password: postgres
+  host: db
+  username: cangerana
+  password: hypersecrety
 
 development:
   <<: *default
-  database: zenrunner_api_development
+  database: zenrunner
 
 test:
   <<: *default
