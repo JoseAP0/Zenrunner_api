@@ -12,6 +12,7 @@ jobs:
       postgres:
         image: postgres:17
         env:
+          POSTGRES_DATABASE: zenrunner
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         ports:
@@ -27,7 +28,7 @@ jobs:
       DB_PORT: 5432
       DB_USERNAME: postgres
       DB_PASSWORD: postgres
-      TEST_DB_NAME: zenrunner_api_test
+      TEST_DB_NAME: zenrunner
       JWT_SECRET: test-jwt-secret
 
     steps:
