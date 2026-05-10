@@ -12,6 +12,9 @@ Rails.application.routes.draw do
         post :login, to: "sessions#create"
         delete :logout, to: "sessions#destroy"
         get :me, to: "profiles#show"
+        patch :onboarding, to: "onboardings#update"
+      end
+      
       end
     end
   end

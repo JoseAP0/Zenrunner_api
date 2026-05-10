@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
 
-  enum :role, { runner: 0, organizer: 1, admin: 2 }
+  enum :role, { runner: 0, organizer: 1, admin: 2, unassigned: 3 }
 
   before_validation :normalize_email
 
