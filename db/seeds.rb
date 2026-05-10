@@ -9,7 +9,7 @@ if Rails.env.development?
 
   roles.each do |role|
     email = "#{role}@zenrunner.com"
-    
+
     User.find_or_create_by!(email: email) do |user|
       user.name = "#{role.capitalize} User"
       user.password = "password123"
