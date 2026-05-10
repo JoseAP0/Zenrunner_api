@@ -1,6 +1,7 @@
 require "rack/attack"
 
 Rack::Attack.cache.store = Rails.cache
+Rack::Attack.enabled = false if Rails.env.test?
 
 Rack::Attack.throttled_responder = lambda do |request|
   match_data = request.env["rack.attack.match_data"] || {}
