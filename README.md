@@ -53,6 +53,7 @@ This project was built to demonstrate advanced full-stack capabilities, includin
 *   Node.js & npm/yarn
 *   PostgreSQL
 *   Redis
+*   Stripe test credentials
 
 ### Backend Setup
 1. Clone the repository: `git clone <your-repo-url>`

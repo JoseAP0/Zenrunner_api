@@ -1,14 +1,14 @@
 class User < ApplicationRecord
   has_secure_password
 
-  enum :role, { runner: 0, organizer: 1, admin: 2 }
+  enum :role, { runner: 0, organizer: 1, admin: 2, unassigned: 3 }
 
   before_validation :normalize_email
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :role, presence: true
-  validates :password, length: { minimum: 8 }
+  validates :password, length: { minimum: 8 }, if: -> { password_digest_changed? }
 
   private
 
