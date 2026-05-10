@@ -16,7 +16,12 @@ module Auth
     end
 
     def self.secret_key
-      ENV["JWT_SECRET"] || Rails.application.credentials.secret_key_base || Rails.application.secret_key_base
+      jwt_secret = ENV["JWT_SECRET"].presence
+      return jwt_secret if jwt_secret
+
+      raise "Missing JWT_SECRET" if Rails.env.production?
+
+      Rails.application.credentials.secret_key_base || Rails.application.secret_key_base
     end
 
     def self.expiration_window
