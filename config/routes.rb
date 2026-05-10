@@ -14,8 +14,6 @@ Rails.application.routes.draw do
         get :me, to: "profiles#show"
         patch :onboarding, to: "onboardings#update"
       end
-      
-      end
     end
   end
 end
