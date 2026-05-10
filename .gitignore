@@ -35,7 +35,8 @@
 # We NEVER want to push real secret keys to GitHub.
 .env
 .env.*
-!.env.example # It's good practice to commit a blank template file for other devs
+# It's good practice to commit a blank template file for other devs.
+!.env.example
 
 # Prevents cluttering the repo with your personal machine's hidden files
 .DS_Store
@@ -50,4 +51,3 @@
 # 3. Code Coverage & Testing
 coverage/
 Documentation
-
