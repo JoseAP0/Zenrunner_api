@@ -6,3 +6,38 @@ inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 # # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 # Layout/SpaceInsideArrayLiteralBrackets:
 #   Enabled: false
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - '.git/**/*'
+    - 'bin/*'
+
+Layout/IndentationWidth:
+  Enabled: false
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+Layout/SpaceBeforeFirstArg:
+  Enabled: false
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/OneClassPerFile:
+  Exclude:
+    - lib/rubocop/rspec/cop_helper.rb
+    - tasks/spec_runner.rake
+
+Layout/LineLength:
+  Max: 20
+  AllowedPatterns:
+    - !ruby/regexp /\A +(it|describe|context|shared_examples|include_examples|it_behaves_like) ["']/
+
+Lint/EmptyFile:
+  Exclude:
+    # This file is intentionally empty to catch rubocop cops failing on empty files.
+    - spec/rubocop/intentionally_empty_file.rb
