@@ -30,7 +30,6 @@
 
 # Ignore key files for decrypting credentials and more.
 /config/*.key
-/config/database.yml
 
 # We NEVER want to push real secret keys to GitHub.
 .env
