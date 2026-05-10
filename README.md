@@ -63,6 +63,32 @@ This project was built to demonstrate advanced full-stack capabilities, includin
 5. Setup the database: `rails db:create db:migrate db:seed`
 6. Start the Rails server: `rails s` (Runs on `http://localhost:3000`)
 
+## 🔐 Production Environment Checklist
+
+Before deploying, configure these environment variables or deployment secrets. Do not commit real values to git.
+
+### Required secrets
+*   `RAILS_MASTER_KEY` - decrypts Rails credentials.
+*   `JWT_SECRET` - signs authentication tokens. Use a long random value and keep it separate from `RAILS_MASTER_KEY`.
+*   `DATABASE_NAME` - production database name.
+*   `DATABASE_HOST` - production database host.
+*   `DATABASE_USERNAME` - production database user.
+*   `DATABASE_PASSWORD` - production database password.
+*   `STRIPE_SECRET_KEY` - Stripe server-side API key.
+*   `STRIPE_PUBLISHABLE_KEY` - Stripe publishable key returned to clients.
+*   `STRIPE_WEBHOOK_SECRET` - Stripe webhook signing secret.
+
+### Required production settings
+*   `APP_HOST` - canonical app host used for generated URLs.
+*   `ALLOWED_HOSTS` - comma-separated host allowlist, usually including `APP_HOST`.
+
+### Optional settings
+*   `DATABASE_PORT` - defaults to `5432`.
+*   `REDIS_URL` - defaults to `redis://localhost:6379/0`.
+*   `RAILS_LOG_LEVEL` - defaults to `info`.
+*   `STRIPE_API_VERSION` - defaults to `2025-02-24.acacia`.
+*   `SIDEKIQ_CONCURRENCY`, `JOB_CONCURRENCY`, `RAILS_MAX_THREADS`, and `PORT` tune runtime behavior.
+
 ---
 
 ## 🗺️ Roadmap & Future Features
