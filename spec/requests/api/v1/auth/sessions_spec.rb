@@ -22,6 +22,38 @@ RSpec.describe "Auth sessions", type: :request do
       expect(response).to have_http_status(:unauthorized)
       expect(json_body.dig("error", "code")).to eq("invalid_credentials")
     end
+
+    it "rate limits repeated attempts from the same email", :rack_attack do
+      5.times do
+        post "/api/v1/auth/login",
+          params: { session: { email: "ALICE@example.com", password: "wrong-password" } },
+          as: :json
+      end
+
+      post "/api/v1/auth/login",
+        params: { session: { email: "alice@example.com", password: "wrong-password" } },
+        as: :json
+
+      expect(response).to have_http_status(:too_many_requests)
+      expect(response.headers["Retry-After"]).to eq("300")
+      expect(json_body.dig("error", "code")).to eq("rate_limited")
+    end
+
+    it "rate limits repeated attempts from the same ip", :rack_attack do
+      10.times do |index|
+        post "/api/v1/auth/login",
+          params: { session: { email: "user-#{index}@example.com", password: "wrong-password" } },
+          as: :json
+      end
+
+      post "/api/v1/auth/login",
+        params: { session: { email: "another-user@example.com", password: "wrong-password" } },
+        as: :json
+
+      expect(response).to have_http_status(:too_many_requests)
+      expect(response.headers["Retry-After"]).to eq("60")
+      expect(json_body.dig("error", "code")).to eq("rate_limited")
+    end
   end
 
   describe "DELETE /api/v1/auth/logout" do
