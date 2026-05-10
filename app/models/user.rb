@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :role, presence: true
-  validates :password, length: { minimum: 8 }
+  validates :password, length: { minimum: 8 }, if: -> { password_digest_changed? }
 
   private
 
