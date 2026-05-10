@@ -45,6 +45,9 @@ gem "image_processing", "~> 1.2"
 # Stripe payments
 gem "stripe", "~> 19.1"
 
+# Rack middleware for request throttling
+gem "rack-attack", "~> 6.8"
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 

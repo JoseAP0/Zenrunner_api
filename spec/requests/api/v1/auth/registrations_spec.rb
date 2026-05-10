@@ -32,5 +32,21 @@ RSpec.describe "Auth registration", type: :request do
       expect(response).to have_http_status(:unprocessable_content)
       expect(json_body.dig("error", "code")).to eq("validation_error")
     end
+
+    it "rate limits repeated registration attempts from the same ip", :rack_attack do
+      5.times do
+        post "/api/v1/auth/register",
+          params: { user: params[:user].merge(email: "") },
+          as: :json
+      end
+
+      post "/api/v1/auth/register",
+        params: { user: params[:user].merge(email: "") },
+        as: :json
+
+      expect(response).to have_http_status(:too_many_requests)
+      expect(response.headers["Retry-After"]).to eq("3600")
+      expect(json_body.dig("error", "code")).to eq("rate_limited")
+    end
   end
 end
