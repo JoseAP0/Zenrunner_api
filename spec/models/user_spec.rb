@@ -32,7 +32,7 @@ RSpec.describe User, type: :model do
 
   describe "roles" do
     it "supports admin runner and organizer roles" do
-      expect(described_class.roles).to eq("runner" => 0, "organizer" => 1, "admin" => 2)
+      expect(described_class.roles).to eq("runner" => 0, "organizer" => 1, "admin" => 2, "unassigned" => 3)
     end
   end
 end
