@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -e
+
+docker compose run --rm -e RAILS_ENV=test web bundle exec rspec "$@"
