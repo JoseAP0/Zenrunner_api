@@ -43,7 +43,7 @@ gem "thruster", require: false
 gem "image_processing", "~> 2.0"
 
 # Stripe payments
-gem "stripe", "~> 19.1"
+gem "stripe", "~> 19.3"
 
 # Rack middleware for request throttling
 gem "rack-attack", "~> 6.8"
